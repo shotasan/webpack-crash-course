@@ -15,6 +15,16 @@ module.exports = {
     // pathは絶対パスで指定する
     path: outputPath,
   },
+  module: {
+    rules: [
+      {
+        // cssファイルにcss-loaderを使うという設定
+        test: /\.css$/,
+        // 順番に注意
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
   devServer: {
     // デフォルトで開くファイルパス
     contentBase: outputPath,

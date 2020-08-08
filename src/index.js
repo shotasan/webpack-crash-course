@@ -1,6 +1,7 @@
 import _ from 'lodash';
 // import { NAME as NAME_OF_MEG } from './utiles';
 import Lion from './utiles';
+import './style.css';
 
 console.log(Lion.say());
 // console.log(NAME_OF_MEG);
@@ -15,3 +16,4 @@ function compopnent() {
 }
 
 document.body.appendChild(compopnent());
+document.body.classList.add('haikei');
