@@ -23,6 +23,16 @@ module.exports = {
         // 順番に注意
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loader: 'url-loader',
+        options: {
+          // 指定のサイズを超える場合
+          limit: 2048,
+          // 指定フォルダに分離させる
+          name: './images/[name].[ext]',
+        },
+      },
     ],
   },
   devServer: {
