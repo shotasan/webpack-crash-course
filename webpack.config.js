@@ -15,4 +15,8 @@ module.exports = {
     // pathは絶対パスで指定する
     path: outputPath,
   },
+  devServer: {
+    // デフォルトで開くファイルパス
+    contentBase: outputPath,
+  },
 };
