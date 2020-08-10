@@ -2,6 +2,7 @@ import _ from 'lodash';
 // import { NAME as NAME_OF_MEG } from './utiles';
 import Lion from './utiles';
 import './style.css';
+import './style.scss';
 import logo from './logo.png';
 
 console.log(Lion.say());
