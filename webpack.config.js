@@ -3,6 +3,8 @@ const path = require('path');
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 // 絶対パスの生成
 const outputPath = path.resolve(__dirname, 'dist');
 console.log({ outputPath });
@@ -20,15 +22,9 @@ module.exports = {
   module: {
     rules: [
       {
-        // cssファイルにcss-loaderを使うという設定
-        test: /\.css$/,
-        // 順番に注意
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.scss$/,
+        test: /\.(sc|c)ss$/,
         // sass-loaderでsassファイルをコンパイルする→css-loaderでcssをコンパイル→style-loaderでstyleタグを付与
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
@@ -56,9 +52,16 @@ module.exports = {
     contentBase: outputPath,
   },
   plugins: [
+    // reactのプラグイン
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
+    }),
+    new MiniCssExtractPlugin({
+      // nameはデフォルトでmainになる。
+      // hashはバンドル時にユニークなファイル名を生成するための記述
+      // プロキシサーバーのキャッシュを回避する効果がある
+      filename: '[name].[hash].css',
     }),
   ],
 };
