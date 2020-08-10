@@ -1,0 +1,4 @@
+{
+  // preset-envとpreset-reactの設定を追加
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}

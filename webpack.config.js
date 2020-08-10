@@ -1,6 +1,8 @@
 // Node.jsのpathモジュールを使う
 const path = require('path');
 
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
 // 絶対パスの生成
 const outputPath = path.resolve(__dirname, 'dist');
 console.log({ outputPath });
@@ -38,10 +40,25 @@ module.exports = {
           name: './images/[name].[ext]',
         },
       },
+      // babelの設定
+      // 対象ファイルにJSXを追加
+      // exclude→node-module配下を除外している
+      // babel-loaderでトランスパイルを実行する
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
+      {
+        test: /\html$/,
+        loader: 'html-loader',
+      },
     ],
   },
   devServer: {
     // デフォルトで開くファイルパス
     contentBase: outputPath,
   },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+  ],
 };
