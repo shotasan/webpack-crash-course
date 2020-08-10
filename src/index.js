@@ -30,4 +30,6 @@ import ReactDOM from 'react-dom';
 import './style.css';
 import './style.scss';
 
+console.log('I am loggggggg');
+
 ReactDOM.render(<div>Helllo, React!!!!!</div>, document.getElementById('root'));
